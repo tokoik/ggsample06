@@ -1,139 +1,38 @@
-// ƒEƒBƒ“ƒhƒEŠÖ˜A‚Ìˆ—
-#include "Window.h"
+ï»¿//
+// ãƒ¡ã‚¤ãƒ³ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+//
 
-// ƒVƒF[ƒ_[ŠÖ˜A‚Ìˆ—
-#include "shader.h"
+// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã®è¡¨ç¤ºã®æº–å‚™
+#if defined(_WIN32)
+#  include <Windows.h>
+#  include <atlstr.h>  
+#endif
 
-// •W€ƒ‰ƒCƒuƒ‰ƒŠ
-#include <cmath>
-
-// ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌüŠúi•bj
-const double cycle(5.0);
+// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æœ¬ä½“
+#include "GgApplication.h"
 
 //
-// ƒƒCƒ“ƒvƒƒOƒ‰ƒ€
+// ãƒ¡ã‚¤ãƒ³ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 //
-int main()
+int main() try
 {
-  // ƒEƒBƒ“ƒhƒE‚ğì¬‚·‚é
-  Window window("ggsample06");
+  // ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æœ¬ä½“
+  GgApplication app;
 
-  // ”wŒiF‚ğw’è‚·‚é
-  glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
-
-  // ƒvƒƒOƒ‰ƒ€ƒIƒuƒWƒFƒNƒg‚Ìì¬
-  const GLuint program(loadProgram("simple.vert", "pv", "simple.frag", "fc"));
-
-  // in (attribute) •Ï” cv ‚ÌƒCƒ“ƒfƒbƒNƒX‚ÌŒŸõiŒ©‚Â‚©‚ç‚È‚¯‚ê‚Î -1j
-  const GLint cvLoc(glGetAttribLocation(program, "cv"));
-
-  // uniform •Ï”‚ÌƒCƒ“ƒfƒbƒNƒX‚ÌŒŸõiŒ©‚Â‚©‚ç‚È‚¯‚ê‚Î -1j
-  const GLint mwLoc(glGetUniformLocation(program, "mw"));
-  const GLint mcLoc(glGetUniformLocation(program, "mc"));
-  const GLint mgLoc(glGetUniformLocation(program, "mg"));
-
-  // ƒrƒ…[•ÏŠ·s—ñ‚ğ mv ‚É‹‚ß‚é
-  const GgMatrix mv(ggLookat(0.0f, 2.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f));
-
-  // ’¸“_”z—ñƒIƒuƒWƒFƒNƒg‚Ìì¬
-  GLuint vao;
-  glGenVertexArrays(1, &vao);
-  glBindVertexArray(vao);
-
-  // ’¸“_ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚Ìì¬
-  GLuint vbo[2];
-  glGenBuffers(2, vbo);
-
-  // ’¸“_‚ÌÀ•W’l
-  static const GLfloat pv[][3] =
-  {
-    { -1.0f, -0.8660254f, 0.0f },
-    {  1.0f, -0.8660254f, 0.0f },
-    {  0.0f,  0.8660254f, 0.0f }
-  };
-
-  // ’¸“_‚Ì”
-  static const int points(sizeof pv / sizeof pv[0]);
-
-  // ’¸“_‚ÌÀ•W’l pv —p‚Ìƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg
-  glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-  glBufferData(GL_ARRAY_BUFFER, sizeof pv, pv, GL_STATIC_DRAW);
-
-  // Œ‹‡‚³‚ê‚Ä‚¢‚é’¸“_ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚ğ in •Ï” pv (index == 0) ‚©‚çQÆ‚Å‚«‚é‚æ‚¤‚É‚·‚é
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-  glEnableVertexAttribArray(0);
-
-  // ’¸“_‚ÌF
-  static const GLfloat cv[][3] =
-  {
-    { 1.0f, 0.0f, 0.0f },  // Ô
-    { 0.0f, 1.0f, 0.0f },  // —Î
-    { 0.0f, 0.0f, 1.0f }   // Â
-  };
-
-  // ’¸“_‚Ì–@üƒxƒNƒgƒ‹ih‘è—pj
-  static const GLfloat nv[][3] =
-  {
-    { -0.086172748f, -0.049751860f, 0.99503719f },
-    {  0.086172748f, -0.049751860f, 0.99503719f },
-    {  0.0f, 0.099503719f, 0.99503719f }
-  };
-
-  // ’¸“_‚ÌF cv —p‚Ìƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg
-  glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-  // yh‘èzcv ‚Ì‘ã‚í‚è‚É nv ‚ğg‚¤‚æ‚¤‚É•ÏX‚·‚é
-  glBufferData(GL_ARRAY_BUFFER, sizeof cv, cv, GL_STATIC_DRAW);
-
-  // Œ‹‡‚³‚ê‚Ä‚¢‚é’¸“_ƒoƒbƒtƒ@ƒIƒuƒWƒFƒNƒg‚ğ in •Ï” cv (index == cvLoc) ‚©‚çQÆ‚Å‚«‚é‚æ‚¤‚É‚·‚é
-  glVertexAttribPointer(cvLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
-  glEnableVertexAttribArray(cvLoc);
-
-  // Œo‰ßŠÔ‚ÌƒŠƒZƒbƒg
-  glfwSetTime(0.0);
-
-  // ƒEƒBƒ“ƒhƒE‚ªŠJ‚¢‚Ä‚¢‚éŠÔŒJ‚è•Ô‚·
-  while (window.shouldClose() == GL_FALSE)
-  {
-    // ƒEƒBƒ“ƒhƒE‚ğÁ‹‚·‚é
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    // ƒVƒF[ƒ_ƒvƒƒOƒ‰ƒ€‚Ìg—pŠJn
-    glUseProgram(program);
-
-    // ‚ÌŒv‘ª
-    const float t(static_cast<float>(fmod(glfwGetTime(), cycle) / cycle));
-
-    // ƒ‚ƒfƒ‹ƒrƒ…[•ÏŠ·s—ñ ( t ‚É‚à‚Æ‚Ã‚­‰ñ“]ƒAƒjƒ[ƒVƒ‡ƒ“)
-    const GgMatrix mw(mv.rotateY(12.56637f * t));
-
-    // –@ü•ÏŠ·s—ñ
-    const GgMatrix mg(mw.normal());
-
-    // “Š‰e•ÏŠ·s—ñ
-    const GgMatrix mp(ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f));
-
-    // ƒ‚ƒfƒ‹ƒrƒ…[E“Š‰e•ÏŠ·
-    const GgMatrix mc(mp * mw);
-
-    // uniform •Ï”‚ğİ’è‚·‚é
-    glUniformMatrix4fv(mwLoc, 1, GL_FALSE, mw.get());
-    glUniformMatrix4fv(mcLoc, 1, GL_FALSE, mc.get());
-    glUniformMatrix4fv(mgLoc, 1, GL_FALSE, mg.get());
-
-    // •`‰æ‚Ég‚¤’¸“_”z—ñƒIƒuƒWƒFƒNƒg‚Ìw’è
-    glBindVertexArray(vao);
-
-    // }Œ`‚Ì•`‰æ
-    glDrawArrays(GL_TRIANGLES, 0, points);
-
-    // ’¸“_”z—ñƒIƒuƒWƒFƒNƒg‚Ìw’è‰ğœ
-    glBindVertexArray(0);
-
-    // ƒVƒF[ƒ_ƒvƒƒOƒ‰ƒ€‚Ìg—pI—¹
-    glUseProgram(0);
-
-    // ƒJƒ‰[ƒoƒbƒtƒ@‚ğ“ü‚ê‘Ö‚¦‚ÄƒCƒxƒ“ƒg‚ğæ‚èo‚·
-    window.swapBuffers();
-  }
+  // ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹
+  app.run();
 }
+catch (const std::exception &e)
+{
+  // ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹
+#if defined(_WIN32)
+  const CStringW message(e.what());
+  MessageBox(NULL, LPCWSTR(message), TEXT("ã‚²ãƒ¼ãƒ ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¹ç‰¹è«–"), MB_OK | MB_ICONERROR);
+#else
+  std::cerr << e.what() << "\n\n[Type enter key] ";
+  std::cin.get();
+#endif
 
+  // ãƒ–ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã™ã‚‹
+  return EXIT_FAILURE;
+}

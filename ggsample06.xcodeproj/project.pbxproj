@@ -8,25 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		7D7AF85F1222C8CC003A0434 /* opengl.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AF85E1222C8CC003A0434 /* opengl.icns */; };
+		7DAA7E842056BF4400A2680F /* ggsample06.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA7E832056BF4400A2680F /* ggsample06.cpp */; };
 		7DE0458B150E22FE00D946BA /* gg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DE04589150E22FE00D946BA /* gg.cpp */; };
 		7DE0458D150E230800D946BA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DE0458C150E230800D946BA /* main.cpp */; };
-		7DE04593150E232800D946BA /* simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 7DE04591150E232100D946BA /* simple.frag */; };
-		7DE04594150E232800D946BA /* simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 7DE04592150E232100D946BA /* simple.vert */; };
+		7DE04593150E232800D946BA /* ggsample06.frag in Resources */ = {isa = PBXBuildFile; fileRef = 7DE04591150E232100D946BA /* ggsample06.frag */; };
+		7DE04594150E232800D946BA /* ggsample06.vert in Resources */ = {isa = PBXBuildFile; fileRef = 7DE04592150E232100D946BA /* ggsample06.vert */; };
 		7DF9706117562949007804E4 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DF9705F17562949007804E4 /* shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7D1E90EE1123E36C005E6C75 /* ggsample06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ggsample06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1E90F11123E36C005E6C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D407AE220733DBD00722410 /* GgApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GgApplication.h; sourceTree = "<group>"; };
 		7D7AF85E1222C8CC003A0434 /* opengl.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = opengl.icns; sourceTree = "<group>"; };
-		7DA18D1E1ED166E10019835E /* Window.h */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
-		7DE04589150E22FE00D946BA /* gg.cpp */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = gg.cpp; sourceTree = "<group>"; };
-		7DE0458A150E22FE00D946BA /* gg.h */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = gg.h; sourceTree = "<group>"; };
-		7DE0458C150E230800D946BA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
-		7DE04591150E232100D946BA /* simple.frag */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = simple.frag; sourceTree = "<group>"; };
-		7DE04592150E232100D946BA /* simple.vert */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = simple.vert; sourceTree = "<group>"; };
-		7DF9705F17562949007804E4 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = shader.cpp; sourceTree = "<group>"; };
-		7DF9706017562949007804E4 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = shader.h; sourceTree = "<group>"; };
+		7DAA7E832056BF4400A2680F /* ggsample06.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = ggsample06.cpp; path = /Users/tokoi/Projects/ggsample06/ggsample06.cpp; sourceTree = "<absolute>"; };
+		7DE04589150E22FE00D946BA /* gg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = gg.cpp; sourceTree = "<group>"; };
+		7DE0458A150E22FE00D946BA /* gg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = gg.h; sourceTree = "<group>"; };
+		7DE0458C150E230800D946BA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
+		7DE04591150E232100D946BA /* ggsample06.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample06.frag; sourceTree = "<group>"; };
+		7DE04592150E232100D946BA /* ggsample06.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample06.vert; sourceTree = "<group>"; };
+		7DF9705F17562949007804E4 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = shader.cpp; sourceTree = "<group>"; };
+		7DF9706017562949007804E4 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = shader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,14 +45,15 @@
 		7D1E90D81123E2F7005E6C75 = {
 			isa = PBXGroup;
 			children = (
+				7DAA7E832056BF4400A2680F /* ggsample06.cpp */,
 				7DE0458C150E230800D946BA /* main.cpp */,
 				7DE0458A150E22FE00D946BA /* gg.h */,
 				7DE04589150E22FE00D946BA /* gg.cpp */,
 				7DF9706017562949007804E4 /* shader.h */,
 				7DF9705F17562949007804E4 /* shader.cpp */,
-				7DA18D1E1ED166E10019835E /* Window.h */,
-				7DE04592150E232100D946BA /* simple.vert */,
-				7DE04591150E232100D946BA /* simple.frag */,
+				7D407AE220733DBD00722410 /* GgApplication.h */,
+				7DE04592150E232100D946BA /* ggsample06.vert */,
+				7DE04591150E232100D946BA /* ggsample06.frag */,
 				7D1E90EF1123E36C005E6C75 /* Products */,
 				7D1E90F11123E36C005E6C75 /* Info.plist */,
 				7D7AF85E1222C8CC003A0434 /* opengl.icns */,
@@ -91,7 +94,7 @@
 		7D1E90DA1123E2F7005E6C75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 7D1E90DD1123E2F7005E6C75 /* Build configuration list for PBXProject "ggsample06" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -118,8 +121,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DE04593150E232800D946BA /* simple.frag in Resources */,
-				7DE04594150E232800D946BA /* simple.vert in Resources */,
+				7DE04593150E232800D946BA /* ggsample06.frag in Resources */,
+				7DE04594150E232800D946BA /* ggsample06.vert in Resources */,
 				7D7AF85F1222C8CC003A0434 /* opengl.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DE0458B150E22FE00D946BA /* gg.cpp in Sources */,
+				7DAA7E842056BF4400A2680F /* ggsample06.cpp in Sources */,
 				7DE0458D150E230800D946BA /* main.cpp in Sources */,
 				7DF9706117562949007804E4 /* shader.cpp in Sources */,
 			);
@@ -145,12 +149,18 @@
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -175,12 +185,18 @@
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -202,6 +218,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -209,11 +226,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = $PROJECT_DIR/include;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = $PROJECT_DIR/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
-					libglfw3_macos.a,
+					"-lglfw3_macos",
 					"-framework",
 					OpenGL,
 					"-framework",
@@ -232,17 +251,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = $PROJECT_DIR/include;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = $PROJECT_DIR/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
-					libglfw3_macos.a,
+					"-lglfw3_macos",
 					"-framework",
 					OpenGL,
 					"-framework",

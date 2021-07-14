@@ -1,5 +1,7 @@
-﻿// ウィンドウ関連の処理
-#include "Window.h"
+﻿//
+// ゲームグラフィックス特論宿題アプリケーション
+//
+#include "GgApp.h"
 
 // シェーダー関連の処理
 #include "shader.h"
@@ -8,32 +10,32 @@
 #include <cmath>
 
 // アニメーションの周期（秒）
-const double cycle(5.0);
+constexpr auto cycle{ 5.0 };
 
 //
-// アプリケーションの実行
+// アプリケーション本体
 //
-void app()
+int GgApp::main(int argc, const char* const* argv)
 {
   // ウィンドウを作成する
-  Window window("ggsample06");
+  Window window{ "ggsample06" };
 
   // 背景色を指定する
   glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
   // プログラムオブジェクトの作成
-  const GLuint program(loadProgram("ggsample06.vert", "pv", "ggsample06.frag", "fc"));
+  const auto program{ loadProgram("ggsample06.vert", "pv", "ggsample06.frag", "fc") };
 
   // in (attribute) 変数 cv のインデックスの検索（見つからなければ -1）
-  const GLint cvLoc(glGetAttribLocation(program, "cv"));
+  const auto cvLoc{ glGetAttribLocation(program, "cv") };
 
   // uniform 変数のインデックスの検索（見つからなければ -1）
-  const GLint mwLoc(glGetUniformLocation(program, "mw"));
-  const GLint mcLoc(glGetUniformLocation(program, "mc"));
-  const GLint mgLoc(glGetUniformLocation(program, "mg"));
+  const auto mwLoc{ glGetUniformLocation(program, "mw") };
+  const auto mcLoc{ glGetUniformLocation(program, "mc") };
+  const auto mgLoc{ glGetUniformLocation(program, "mg") };
 
   // ビュー変換行列を mv に求める
-  const GgMatrix mv(ggLookat(0.0f, 2.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f));
+  const auto mv{ ggLookat(0.0f, 2.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f) };
 
   // 頂点配列オブジェクトの作成
   GLuint vao;
@@ -45,7 +47,7 @@ void app()
   glGenBuffers(2, vbo);
 
   // 頂点の座標値
-  static const GLfloat pv[][3] =
+  static const GLfloat pv[][3]
   {
     { -1.0f, -0.8660254f, 0.0f },
     {  1.0f, -0.8660254f, 0.0f },
@@ -53,7 +55,7 @@ void app()
   };
 
   // 頂点の数
-  static const int points(sizeof pv / sizeof pv[0]);
+  constexpr auto points{ static_cast<int>(std::size(pv)) };
 
   // 頂点の座標値 pv 用のバッファオブジェクト
   glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
@@ -64,7 +66,7 @@ void app()
   glEnableVertexAttribArray(0);
 
   // 頂点の色
-  static const GLfloat cv[][3] =
+  static const GLfloat cv[][3]
   {
     { 1.0f, 0.0f, 0.0f },  // 赤
     { 0.0f, 1.0f, 0.0f },  // 緑
@@ -72,7 +74,7 @@ void app()
   };
 
   // 頂点の法線ベクトル（宿題用）
-  static const GLfloat nv[][3] =
+  static const GLfloat nv[][3]
   {
     { -0.086172748f, -0.049751860f, 0.99503719f },
     {  0.086172748f, -0.049751860f, 0.99503719f },
@@ -101,19 +103,19 @@ void app()
     glUseProgram(program);
 
     // 時刻の計測
-    const float t(static_cast<float>(fmod(glfwGetTime(), cycle) / cycle));
+    const auto t{ static_cast<float>(fmod(glfwGetTime(), cycle) / cycle) };
 
     // モデルビュー変換行列 (時刻 t にもとづく回転アニメーション)
-    const GgMatrix mw(mv.rotateY(12.56637f * t));
+    const auto mw{ mv.rotateY(12.56637f * t) };
 
     // 法線変換行列
-    const GgMatrix mg(mw.normal());
+    const auto mg{ mw.normal() };
 
     // 投影変換行列
-    const GgMatrix mp(ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f));
+    const auto mp{ ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f) };
 
     // モデルビュー・投影変換
-    const GgMatrix mc(mp * mw);
+    const auto mc{ mp * mw };
 
     // uniform 変数を設定する
     glUniformMatrix4fv(mwLoc, 1, GL_FALSE, mw.get());
@@ -135,5 +137,7 @@ void app()
     // カラーバッファを入れ替えてイベントを取り出す
     window.swapBuffers();
   }
+
+  return 0;
 }
 

@@ -3,11 +3,13 @@
 //
 #include "GgApp.h"
 
+// プロジェクト名
+#ifndef PROJECT_NAME
+#  define PROJECT_NAME "ggsample06"
+#endif
+
 // シェーダー関連の処理
 #include "shader.h"
-
-// 標準ライブラリ
-#include <cmath>
 
 // アニメーションの周期（秒）
 constexpr auto cycle{ 5.0 };
@@ -17,14 +19,14 @@ constexpr auto cycle{ 5.0 };
 //
 int GgApp::main(int argc, const char* const* argv)
 {
-  // ウィンドウを作成する
-  Window window{ "ggsample06" };
+  // ウィンドウを作成する (この行は変更しないでください)
+  Window window{ argc > 1 ? argv[1] : PROJECT_NAME };
 
   // 背景色を指定する
   glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
   // プログラムオブジェクトの作成
-  const auto program{ loadProgram("ggsample06.vert", "pv", "ggsample06.frag", "fc") };
+  const auto program{ loadProgram(PROJECT_NAME ".vert", "pv", PROJECT_NAME ".frag", "fc") };
 
   // in (attribute) 変数 cv のインデックスの検索（見つからなければ -1）
   const auto cvLoc{ glGetAttribLocation(program, "cv") };
